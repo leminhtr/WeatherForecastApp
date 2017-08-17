@@ -1,0 +1,40 @@
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
+  <br>
+  <form [formGroup]="forecastForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="forecastCity" name="city" placeholder="City name or coordinates">
+    <button name="button">OK</button>
+  </form>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="forecast">
+    <table border="1" style="table-layout: fixed" cellpadding = "5">
+      <tr>
+          <th id="th1" style="width: 4cm">Date and time</th>
+          <th id="th2" style="width: 4cm">Weather</th>
+          <th id="th3" style="width: 4cm">Min / Max temperature</th>
+          <th id="th4" style="width: 4cm">Pressure</th>
+          <th id="th5" style="width: 4cm">Humidity</th>
+          <th id="th6" style="width: 4cm">Wind speed / direction</th>
+          <th id="th7" style="width: 4cm">Clouds</th>
+      </tr>
+      <tr *ngFor="let time of cityForecast">
+        <td headers="th1" style="width: 2cm">{{time.day}}</td>
+        <td headers="th2" style="width: 2cm"><img src="http://openweathermap.org/img/w/{{time.icon}}.png"></td>
+        <td headers="th3" style="width: 2cm">{{time.tempMin}} / {{time.tempMax}}</td>
+        <td headers="th4" style="width: 2cm">{{time.pressure}}</td>
+        <td headers="th5" style="width: 2cm">{{time.humidity}}</td>
+        <td headers="th6" style="width: 2cm">{{time.wind_speed}} / {{time.wind_dir}}</td>
+        <td headers="th7" style="width: 2cm">{{time.clouds}}</td>
+      </tr>
+    </table>
+
+  </div>
+
+
+
+
+
+
