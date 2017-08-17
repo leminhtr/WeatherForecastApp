@@ -4,6 +4,12 @@
     <input type="text" formControlName="forecastCity" name="city" placeholder="City name or coordinates">
     <button name="button">OK</button>
   </form>
+  <select [(ngModel)]="selectUnits" (change)="OnPageSelected($event.target.value)">
+    <option *ngFor="let u of units" [ngValue]="u" >{{u.name}}</option>
+  </select>
+  <select [(ngModel)]="selectLang" (change)="OnPageSelected($event.target.value)">
+    <option *ngFor="let l of language" value={{l.id}}>{{l.name}}</option>
+  </select>
 </div>
 
 <br>
@@ -22,7 +28,7 @@
       </tr>
       <tr *ngFor="let time of cityForecast">
         <td headers="th1" style="width: 2cm">{{time.day}}</td>
-        <td headers="th2" style="width: 2cm"><img src="http://openweathermap.org/img/w/{{time.icon}}.png"></td>
+        <td headers="th2" style="width: 2cm"><img src="https://openweathermap.org/img/w/{{time.icon}}.png"></td>
         <td headers="th3" style="width: 2cm">{{time.tempMin}} / {{time.tempMax}}</td>
         <td headers="th4" style="width: 2cm">{{time.pressure}}</td>
         <td headers="th5" style="width: 2cm">{{time.humidity}}</td>
