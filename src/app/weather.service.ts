@@ -18,8 +18,8 @@ export class WeatherService {
     return this.http.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=3c1cd1d8650e75bc7ba8fdb48d06e445&units=imperial`).map((response:Response) => response.json())
   }
 
-  cityWeather(city:string){
-    return this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=3c1cd1d8650e75bc7ba8fdb48d06e445&units=imperial`).map((response:Response) => response.json());
+  cityWeather(city:string, unit:string, lang:string){
+    return this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=3c1cd1d8650e75bc7ba8fdb48d06e445&units=${unit}&lang=${lang}`).map((response:Response) => response.json());
   }
 
   forecast5(city:string){

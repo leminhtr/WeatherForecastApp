@@ -1,15 +1,22 @@
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
   <br>
   <form (ngSubmit)="onSubmit(form)" #form="ngForm">
-    <input type="text" ngModel name="city" placeholder="City name or coordinates">
+    <input type="text" ngModel name="city" placeholder="City name">
+
+    <br>
+
+    <select ngModel name="unit">
+      <option *ngFor="let u of units" [ngValue]="u.name" >{{u.name}}</option>
+    </select>
+    <select ngModel name="lang">
+      <option *ngFor="let l of language" value={{l.id}} selected>{{l.name}}</option>
+    </select>
+
+    <br>
     <button name="button">OK</button>
   </form>
-  <select [(ngModel)]="selectUnits" (change)="OnPageSelected($event.target.value)">
-    <option *ngFor="let u of units" [ngValue]="u" >{{u.name}}</option>
-  </select>
-  <select [(ngModel)]="selectLang" (change)="OnPageSelected($event.target.value)">
-    <option *ngFor="let l of language" value={{l.id}}>{{l.name}}</option>
-  </select>
+
+
 </div>
 
 

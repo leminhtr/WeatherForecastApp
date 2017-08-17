@@ -13,8 +13,8 @@ export class CurrentComponent implements OnInit {
   myWeather: CurrentWeather;
   location;
   units = [
-    {id: 1, name: "metric"},
-    {id: 2, name: "imperial"}
+    {name: "metric"},
+    {name: "imperial"}
   ];
   language = [
     {id: 'en', name: "English"},
@@ -86,7 +86,8 @@ export class CurrentComponent implements OnInit {
 
   onSubmit(weatherForm:NgForm)
   {
-    this.ws.cityWeather(weatherForm.value.city).subscribe(
+    console.log(weatherForm);
+    this.ws.cityWeather(weatherForm.value.city, weatherForm.value.unit, weatherForm.value.lang).subscribe(
       (data) => {
         this.myWeather = new CurrentWeather(data.name,
           data.sys.country,
