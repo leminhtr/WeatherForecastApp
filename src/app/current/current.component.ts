@@ -16,7 +16,7 @@ export class CurrentComponent implements OnInit {
   myWeather: CurrentWeather;  // custom class : current-weather.ts
   location;
 
-  // Default unit is imperial, choice not required
+  // Default unit is standard, until other chosen
   units = [
     {name: "metric"},
     {name: "imperial"}

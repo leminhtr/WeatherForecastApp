@@ -12,10 +12,12 @@ import {WeatherService} from "../weather.service";
 })
 export class Forecast5Component implements OnInit {
 
+  // Default unit is standard, until other chosen
   units = [
     {name: "metric"},
     {name: "imperial"}
   ];
+    // Default unit is English, choice not required
   language = [
     {id: 'en', name: "English"},
     {id: 'fr', name: "French"},
