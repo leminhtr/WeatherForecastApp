@@ -1,13 +1,17 @@
 <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
   <br>
+  <!-- Form : city name, unit and language -->
   <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <!-- City search input form -->
     <input type="text" ngModel name="city" placeholder="City name">
 
     <br>
-
+    <!-- Unit select form-->
     <select ngModel name="unit">
       <option *ngFor="let u of units" [ngValue]="u.name" >{{u.name}}</option>
     </select>
+
+    <!-- Language select form-->
     <select ngModel name="lang">
       <option *ngFor="let l of language" value={{l.id}} selected>{{l.name}}</option>
     </select>
@@ -15,26 +19,26 @@
     <br>
     <button name="button">OK</button>
   </form>
-
-
 </div>
 
 
 <div class="container">
-  <h2 class="city">{{myWeather.cityName}}, {{myWeather.countryName}}</h2>
+  <!-- Print fetch data -->
+  <h2 class="city">{{myWeather.cityName}}, {{myWeather.countryName}}</h2>   <!-- {City}, {Country} -->
   <img src="https://openweathermap.org/img/w/{{myWeather.icon}}.png">
   <h4 class="description">{{myWeather.weatherInfo}}</h4>
   <h1 class="temperature">{{myWeather.tempCurrent}} </h1>
   <div class="pan">
     <div class="into_temp">
-  <table class="center">
+      <!-- Weather detail w/ table display-->
+  <table class="detail">
     <tr>
       <td>Max temperature : {{myWeather.tempMax}}</td>
       <td>Min temperature : {{myWeather.tempMin}}</td>
     </tr>
     <tr>
-      <td>Wind speed {{myWeather.wind_speed}}</td>
-      <td>Wind direction {{myWeather.wind_dir}}</td>
+      <td>Wind speed : {{myWeather.wind_speed}}</td>
+      <td>Wind direction : {{myWeather.wind_dir}}</td>
     </tr>
     <tr>
       <td>Pressure : {{myWeather.pressure}}</td>
@@ -44,4 +48,6 @@
       <td>Clouds : {{myWeather.clouds}}</td>
     </tr>
   </table>
+</div>
+  </div>
 </div>

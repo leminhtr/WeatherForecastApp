@@ -1,3 +1,6 @@
+// Current weather component
+// Get weather info on machine position or searched city
+
 import { Component, OnInit } from '@angular/core';
 import {WeatherService} from "../weather.service";
 import { CurrentWeather } from '../current-weather';
@@ -10,12 +13,15 @@ import 'rxjs/Rx';
   styleUrls: ['./current.component.css']
 })
 export class CurrentComponent implements OnInit {
-  myWeather: CurrentWeather;
+  myWeather: CurrentWeather;  // custom class : current-weather.ts
   location;
+
+  // Default unit is imperial, choice not required
   units = [
     {name: "metric"},
     {name: "imperial"}
   ];
+  // Default language is English, choice not required
   language = [
     {id: 'en', name: "English"},
     {id: 'fr', name: "French"},
@@ -54,13 +60,14 @@ export class CurrentComponent implements OnInit {
 
   constructor(private ws:WeatherService) { }
 
+  // get Weather info on machine geoloc
   ngOnInit() {
-    this.myWeather=this.ws.weatherNow();
-    navigator.geolocation.getCurrentPosition(((pos) => {
+    this.myWeather=this.ws.weatherNow();  // return dummy data from weather service
+    navigator.geolocation.getCurrentPosition(((pos) => {  // get machine latitude and longitude
       this.location= pos.coords;
       const lat = this.location.latitude;
       const long = this.location.longitude;
-      this.ws.localWeather(lat, long).subscribe(
+      this.ws.localWeather(lat, long).subscribe(  // openweather api call
         (data) =>{
           this.myWeather = new CurrentWeather(data.name,
                                               data.sys.country,
@@ -86,7 +93,7 @@ export class CurrentComponent implements OnInit {
 
   onSubmit(weatherForm:NgForm)
   {
-    console.log(weatherForm);
+    // API call from weather Form
     this.ws.cityWeather(weatherForm.value.city, weatherForm.value.unit, weatherForm.value.lang).subscribe(
       (data) => {
         this.myWeather = new CurrentWeather(data.name,

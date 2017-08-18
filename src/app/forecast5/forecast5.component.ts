@@ -62,6 +62,7 @@ export class Forecast5Component implements OnInit {
   constructor(private weatherService: WeatherService) { }
 
   forecastForm : FormGroup;
+  // array of Forecast class
   cityForecast: Forecast[]=[];
 
   ngOnInit() {
@@ -74,8 +75,10 @@ export class Forecast5Component implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.forecastForm);
-    this.cityForecast.splice(0,this.cityForecast.length)
+    // reset html table for multiple query
+    this.cityForecast.splice(0,this.cityForecast.length);
+
+    // API call from weather Form
     this.weatherService.forecast5(this.forecastForm.value.forecastCity, this.forecastForm.value.forecastUnit, this.forecastForm.value.forecastLang).subscribe(
       (data) => {
         for(let i=0; i<this.forecastForm.value.forecastDayNumber*8; i+=1){

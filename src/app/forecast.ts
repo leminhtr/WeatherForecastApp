@@ -1,3 +1,6 @@
+// Custom class for the forecast weather
+// Define which weather info should be printed on the forecast weather page
+
 export class Forecast {
   constructor(public day: string,
               public icon: string,

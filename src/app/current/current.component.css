@@ -17,6 +17,10 @@ img{
   margin:0 20%;
 }
 
+.detail{
+  margin : 10px auto auto auto;
+}
+
 .city{
   font-size:3.5em;
   font-weight:100;
